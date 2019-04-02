@@ -1,0 +1,90 @@
+{
+  "inline": false,
+  "labelPosition": "right",
+  "labelWidth": "70px",
+  "size": "mini",
+  "statusIcon": true,
+  "formItemList": [
+    {
+      "type": "switch",
+      "label": "内联模式",
+      "key": "inline",
+      "value": false
+    },
+    {
+      "type": "input",
+      "subtype": "text",
+      "label": "模型名称",
+      "key": "modelname",
+      "value": "",
+      "placeholder": "设置模型名称"
+    },
+    {
+      "type": "input",
+      "subtype": "text",
+      "label": "api",
+      "key": "api",
+      "value": "",
+      "placeholder": "设置api名称"
+    },
+    {
+      "type": "input",
+      "subtype": "text",
+      "label": "标签宽度",
+      "key": "labelWidth",
+      "value": "",
+      "placeholder": "css width属性, 可不填, 但会影响对齐"
+    },
+    {
+      "type": "radio",
+      "label": "标签对齐",
+      "key": "labelPosition",
+      "value": "right",
+      "button": true,
+      "options": [
+        {
+          "value": "left",
+          "label": "左对齐"
+        },
+        {
+          "value": "top",
+          "label": "顶部对齐"
+        },
+        {
+          "value": "right",
+          "label": "右对齐"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "label": "尺寸",
+      "key": "size",
+      "value": "small",
+      "options": [
+        {
+          "value": "",
+          "label": "默认"
+        },
+        {
+          "value": "medium",
+          "label": "中"
+        },
+        {
+          "value": "small",
+          "label": "小"
+        },
+        {
+          "value": "mini",
+          "label": "迷你"
+        }
+      ]
+    },
+    {
+      "type": "switch",
+      "label": "验证图标",
+      "key": "statusIcon",
+      "value": true
+    }
+  ]
+}
