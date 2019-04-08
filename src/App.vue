@@ -18,7 +18,7 @@
         <el-menu-item index="/preview">预览</el-menu-item>
         <el-menu-item index="/model">模型管理</el-menu-item>
         <el-menu-item index="/app">应用增加接口</el-menu-item>
-         <el-menu-item index="/preview">应用管理</el-menu-item>
+         <el-menu-item index="/appcate">应用管理</el-menu-item>
           <el-menu-item index="/imgmanage">图片管理</el-menu-item>
           <el-menu-item index="/user">用户管理</el-menu-item>
       </el-menu>

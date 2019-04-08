@@ -3,7 +3,7 @@ export default {
 
     inline: false, // 是否使用inline排版
     labelPosition: 'right', // 标签对齐方式
-    labelWidth: '80px', // 标签宽度
+    labelWidth: '150px', // 标签宽度
     modelname:'默认api模型',
     api:'autoapi',
     size: 'small', // 尺寸

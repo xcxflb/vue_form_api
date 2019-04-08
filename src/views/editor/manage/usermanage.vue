@@ -4,25 +4,38 @@
       <div class='model_body'>
 <el-form :inline="true" :model="formInline" class="demo-form-inline">
   
-  <el-form-item label="姓名">
-    <el-input v-model="formInline.user" placeholder="姓名"></el-input>
+  <el-form-item label="管理员">
+    <el-input v-model="formInline.user" placeholder="管理员名称"></el-input>
   </el-form-item>
 
   <el-form-item>
     <el-button type="primary" @click="onSubmit">查询</el-button>
   </el-form-item>
    <el-form-item label="请选择时间">
-    <el-col :span="11">
-      <el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
-    </el-col>
-    <el-col class="line" :span="2">-</el-col>
-    <el-col :span="11">
-      <el-time-picker placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
-    </el-col>
+ <el-date-picker
+      v-model="value7"
+      type="daterange"
+      align="right"
+      unlink-panels
+      range-separator="至"
+      start-placeholder="开始日期"
+      end-placeholder="结束日期"
+      :picker-options="pickerOptions2">
+    </el-date-picker>
   </el-form-item>
 </el-form>
 
-
+<el-dialog
+  title="提示"
+  :visible.sync="dialogVisible"
+  width="30%"
+  :before-close="handleClose">
+  <span>这是一段信息</span>
+  <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+  </span>
+</el-dialog>
 
       <el-table
     :data="tableData"
@@ -36,19 +49,28 @@
     </el-table-column>
     <el-table-column
       prop="name"
-      label="姓名"
+      label="管理员"
       width="180">
     </el-table-column>
     <el-table-column
       prop="modelname"
-      label="api模型">
+      label="权限列表">
+    </el-table-column>
+        <el-table-column
+      prop="modelname"
+         width="120"
+      label="管理员类型">
+    </el-table-column>
+    <el-table-column
+      prop="modelname"
+      label="管理员信息">
     </el-table-column>
      <el-table-column
       fixed="right"
       label="操作"
       width="100">
       <template slot-scope="scope">
-        <el-button @click="handleClick(scope.row.id)" type="text" size="small">查看</el-button>
+        <el-button @click="handleClick(scope.row.id)" type="text" size="small">修改</el-button>
         <el-button type="text danger" size="small" >删除</el-button>
       </template>
     </el-table-column>
@@ -81,6 +103,35 @@ export default {
       sels:'',
       pageNo:1,
       total:100,
+      dialogVisible:false,
+       pickerOptions2: {
+          shortcuts: [{
+            text: '最近一周',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近一个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近三个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit('pick', [start, end]);
+            }
+          }]
+        },
+        value7: '',
        formInline: {
           user: '',
           region: ''
@@ -119,7 +170,7 @@ export default {
     selsChange(sels){
       console.log(sels);
       console.log("选择")
-    this.sels = sels;
+      this.sels = sels;
     },
     batchAdd(){
 
@@ -151,8 +202,8 @@ export default {
         console.log('submit!');
       },
      handleClick(num){
-        console.log(num)
-        this.$router.push({path:'/editor/form',query:{id:num}});
+       this.dialogVisible=true;
+
       },
     getModel(page=5){
 

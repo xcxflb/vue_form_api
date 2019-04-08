@@ -10,6 +10,7 @@ import ModelManage from '@/views/editor/manage/modelmanage';
 import AppManage from '@/views/editor/manage/appmanage';
 import UserManage from '@/views/editor/manage/usermanage';
 import ImgManage from '@/views/editor/manage/imgmanage';
+import CateManage from '@/views/editor/manage/catemanage';
 Vue.use(Router);
 
 export default new Router({
@@ -55,6 +56,10 @@ export default new Router({
     {
       path: '/imgmanage',
       component:ImgManage,
+    },
+    {
+      path: '/appcate',
+      component:CateManage,
     },
     {
       path: '*',

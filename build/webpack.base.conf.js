@@ -8,6 +8,7 @@ module.exports = {
     extensions: ['*', '.js', '.json', '.vue', '.less'],
     alias: {
       '@': resolve('src'),
+      'excel': path.resolve(__dirname, '../src/excel'),
     },
   },
   module: {
